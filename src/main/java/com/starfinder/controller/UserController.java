@@ -1,9 +1,11 @@
 package com.starfinder.controller;
 
 import com.starfinder.dto.RegisterDTO;
+import com.starfinder.entity.Response;
 import com.starfinder.entity.User;
 import com.starfinder.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,7 +16,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public User createUser(@RequestBody RegisterDTO registerDTO) {
+    public Response<User> createUser(@RequestBody RegisterDTO registerDTO) {
         return userService.createUser(registerDTO);
     }
 
