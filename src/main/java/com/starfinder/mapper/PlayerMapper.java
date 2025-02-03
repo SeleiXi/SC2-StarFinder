@@ -1,6 +1,6 @@
-package com.example.demo.mapper;
+package com.starfinder.mapper;
 
-import com.example.demo.entity.Player;
+import com.starfinder.entity.Player;
 import org.apache.ibatis.annotations.*;
 
 @Mapper

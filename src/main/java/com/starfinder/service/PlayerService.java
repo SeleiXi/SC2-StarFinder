@@ -1,9 +1,10 @@
-package com.example.demo.service;
+package com.starfinder.service;
 
-import com.example.demo.entity.Player;
-import com.example.demo.mapper.PlayerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.starfinder.entity.Player;
+import com.starfinder.mapper.PlayerMapper;
 
 @Service
 public class PlayerService {
