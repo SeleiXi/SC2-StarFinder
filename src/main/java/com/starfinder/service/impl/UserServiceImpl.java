@@ -27,10 +27,10 @@ public class UserServiceImpl implements UserService {
 
         userMapper.insert(user);
         return new Response<>(
-                user,
+                null, // TODO 换成DTO.result.success，但先研究这里我为什么不能"user"
                 200,
                 "注册成功",
-                "token123" // 这里应该使用真实的token生成逻辑
+                "token123" // TODO: 生成token
         );
     }
 
