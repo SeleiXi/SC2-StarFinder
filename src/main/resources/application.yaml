@@ -1,0 +1,18 @@
+spring:
+  # profiles:
+  #   active: test
+  datasource:
+    url: jdbc:mysql://${SC2_DB_URL:localhost:3306/sc2_db}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: ${SC2_DB_USERNAME:root}
+    password: ${SC2_DB_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+server:
+  address: 0.0.0.0
+  port: 8080
+
+abc: Value
