@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.starfinder.dto.RegisterDTO;
+import com.starfinder.dto.Result;
 import com.starfinder.entity.User;
-import com.starfinder.entity.Response;
 import com.starfinder.mapper.UserMapper;
 import com.starfinder.service.UserService;
 
@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public Response<User> createUser(RegisterDTO registerDTO) {
+    public Result<User> createUser(RegisterDTO registerDTO) {
         User user = new User();
         user.setPhoneNumber(registerDTO.getPhoneNumber());
         user.setPassword(registerDTO.getPassword());
@@ -26,12 +26,8 @@ public class UserServiceImpl implements UserService {
         user.setMmr(0);
 
         userMapper.insert(user);
-        return new Response<>(
-                null, // TODO 换成DTO.result.success，但先研究这里我为什么不能"user"
-                200,
-                "注册成功",
-                "token123" // TODO: 生成token
-        );
+
+        return Result.success();
     }
 
     @Override
