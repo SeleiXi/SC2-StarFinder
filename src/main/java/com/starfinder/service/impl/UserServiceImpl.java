@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Result<User> createUser(RegisterDTO registerDTO) {
         User user = new User();
-        user.setPhoneNumber(registerDTO.getPhoneNumber());
+        user.setPhoneNumber(registerDTO.getPhoneNumber()); // TODO： 将数据库栏位设置为唯一，以使phoneNum唯一
         user.setPassword(registerDTO.getPassword());
         // 设置默认值
         user.setName("未命名");
@@ -27,7 +27,18 @@ public class UserServiceImpl implements UserService {
 
         userMapper.insert(user);
 
-        return Result.success();
+        return Result.success(); // TODO: 在Data返回一个JWT Token
+    }
+
+    @Override
+    public Result<User> verifyUser(RegisterDTO loginDTO) {
+        String userPhoneNum = loginDTO.getPhoneNumber();
+        String password = loginDTO.getPassword();
+        User user = userMapper.findByPhoneNum(userPhoneNum);
+        if (password == user.getPassword()) {
+            return Result.success();
+        }
+        return Result.BadRequest("Wrong Password");
     }
 
     @Override

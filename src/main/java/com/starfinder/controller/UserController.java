@@ -20,13 +20,14 @@ public class UserController {
         return userService.createUser(registerDTO);
     }
 
+    @PostMapping("/login")
+    public Result<User> login(@RequestBody RegisterDTO loginDTO) {
+        return userService.verifyUser(loginDTO); // TODO 本系统貌似不需要id，看看黑马有没有id栏位
+    }
+
     @GetMapping("/{id}")
     public User getUser(@PathVariable Long id) {
         return userService.getUserById(id);
     }
 
-    @GetMapping("/")
-    public String hello() {
-        return "hello world";
-    }
 }

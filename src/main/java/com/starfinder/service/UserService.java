@@ -7,5 +7,8 @@ import com.starfinder.entity.User;
 public interface UserService {
     Result<User> createUser(RegisterDTO registerDTO);
 
+    Result<User> verifyUser(RegisterDTO registerDTO);
+
     User getUserById(Long id);
+
 }
